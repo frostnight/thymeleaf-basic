@@ -84,6 +84,33 @@ public class BasicController {
 		}
 	}
 
+	@GetMapping("/operation")
+	public String operation(Model model){
+		model.addAttribute("nullData", null);
+		model.addAttribute("data", "Spring!");
+		return "basic/string";
+	}
+
+	@GetMapping("/attribute")
+	public String attribute(){
+		return "basic/attribute";
+	}
+
+	@GetMapping("/each")
+	public String each(Model model){
+		addUsers(model);
+		return "basic/each";
+	}
+
+	private void addUsers(Model model){
+		List<User> users = List.of(
+			new User("UserA", 10),
+			new User("UserB", 20),
+			new User("UserC", 30)
+			);
+		model.addAttribute("users", users);
+	}
+
 	@Data
 	static class User {
 		private String username;
