@@ -108,6 +108,12 @@ public class BasicController {
 		return "basic/condition";
 	}
 
+	@GetMapping("/comments")
+	public String comments(Model model){
+		addUsers(model);
+		return "basic/comments";
+	}
+
 	private void addUsers(Model model){
 		List<User> users = List.of(
 			new User("UserA", 10),
